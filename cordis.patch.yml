@@ -1,0 +1,22 @@
+# dsh-magpie bundle layer.
+#
+# One Loader row: registers the magpie model-router as DSH agent tools
+# (magpie_status, magpie_provider_add/remove/test, magpie_models,
+# magpie_provider_presets, magpie_server_start/stop/restart, magpie_web_status)
+# and provides the Remote the workspace panel / settings page use.
+#
+# CONFIGURATION (environment variables)
+# -------------------------------------
+# exe: Magpie 可执行文件，由环境变量 MAGPIE_EXE 提供；未设置时回退到 PATH 上的
+#      magpie-windows-amd64.exe（Windows）/ magpie（Linux、macOS）。
+# cwd: Magpie 工作目录（含 .portable / data），由环境变量 MAGPIE_CWD 提供，可选。
+#
+# 不喜欢用环境变量？把下面两行换成普通字符串即可，例如：
+#   exe: "C:\\path\\to\\magpie-windows-amd64.exe"
+#   cwd: "C:/path/to/magpie"
+- insert:
+    - id: magpie
+      name: "dsh-magpie"
+      config:
+        exe: !!js "process.env.MAGPIE_EXE || 'magpie-windows-amd64.exe'"
+        cwd: !!js "process.env.MAGPIE_CWD || undefined"

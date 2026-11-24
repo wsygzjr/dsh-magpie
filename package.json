@@ -1,0 +1,67 @@
+{
+  "name": "dsh-magpie",
+  "version": "1.0.26",
+  "private": false,
+  "description": "Magpie 网关管理：启动 Magpie 服务、管理提供商/模型，并在工作区直接显示 Magpie 的 Web 管理界面。",
+  "type": "module",
+  "license": "MIT",
+  "author": "wsygzjr",
+  "homepage": "https://github.com/wsygzjr/dsh-magpie",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsygzjr/dsh-magpie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wsygzjr/dsh-magpie/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "magpie",
+    "llm-gateway",
+    "model-router",
+    "provider"
+  ],
+  "icon": "./icon.png",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-api-remotes"
+      ]
+    }
+  },
+  "files": [
+    "index.js",
+    "src",
+    "webui",
+    "lib",
+    "scripts",
+    "cordis.patch.yml",
+    "icon.svg",
+    "icon.png",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:client": "node scripts/build-client.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
